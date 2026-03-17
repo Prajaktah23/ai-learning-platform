@@ -17,7 +17,9 @@ class LearningPath(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    #user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+
+    email = Column(String(150), ForeignKey("users.email"), nullable=False, index=True)
 
     title = Column(String(200), nullable=False)
 
@@ -34,4 +36,4 @@ class LearningPath(Base):
     # Relationship (very important for ORM power)
     # user = relationship("User", backref="learning_paths")
     user = relationship("User", back_populates="learning_paths")
-    topics = relationship("Topic", back_populates="learning_path")
+    topics = relationship("Topic", back_populates="learning_path",cascade="all, delete-orphan")
