@@ -44,4 +44,4 @@ class Topic(Base):
     # learning_path = relationship("LearningPath", backref="topics")
     learning_path = relationship("LearningPath", back_populates="topics", cascade="all, delete")
 
-    subtopics = relationship("SubTopic", back_populates="topic", cascade="all, delete")
+    subtopics = relationship("SubTopic", back_populates="topic", cascade="all, delete-orphan")

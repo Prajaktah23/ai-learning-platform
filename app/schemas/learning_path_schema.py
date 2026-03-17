@@ -4,12 +4,11 @@ from .topic_schema import TopicResponse
 from datetime import date
 
 class LearningPathGenerateRequest(BaseModel):
-    user_id: int
+    email: str
     goal: str
     level: str
     duration_weeks: int
     start_date: date
-    # estimated_completion_date: date
 
 
 class LearningPathResponse(BaseModel):

@@ -14,4 +14,6 @@ class SubTopic(Base):
 
     topic = relationship("Topic", back_populates="subtopics")
 
+    status = Column(String, default="pending")
+
     

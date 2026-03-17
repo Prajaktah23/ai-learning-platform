@@ -6,12 +6,21 @@ import app.models.learning_plan
 import app.models.topic, app.models.subtopic
 from app.api import learning_path
 from app.api import tracking
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 app.include_router(auth.router)  # Include the authentication routes
 app.include_router(learning_path.router)
 app.include_router(tracking.router)
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.on_event("startup")
 def test_database_connection():
     try:

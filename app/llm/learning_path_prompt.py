@@ -22,7 +22,7 @@ Return format:
     {{
       "title": "Topic name",
       "subtopics": ["Subtopic1", "Subtopic2", "Subtopic3"],
-      "difficulty_level": "Beginner | Intermediate | Advanced",
+      "difficulty_level": "Beginner OR Intermediate OR Advanced (ONLY ONE)",
       "order_index": 1,
       "estimated_days": 5
     }}

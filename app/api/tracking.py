@@ -1,27 +1,25 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-
+from app.services.foundation.tracking_service import get_dashboard_data
 from app.db.session import get_db
-from app.schemas.topic_schema import TopicCreate, TopicResponse
-from app.services.foundation.tracking_service import get_topics
+from app.services.foundation.tracking_service import complete_subtopic
 
-router = APIRouter(prefix="/topics", tags=["Topics"])
+router = APIRouter()
 
+@router.get("/dashboard/{email}")
+def get_dashboard(email: str, db: Session = Depends(get_db)):
+    return get_dashboard_data(db, email)
 
-@router.post("/{learning_path_id}", response_model=TopicResponse)
-def create_new_topic(
-        learning_path_id: int,
-        data: TopicCreate,
-        db: Session = Depends(get_db)
-):
+@router.put("/subtopic/{subtopic_id}/complete")
+def mark_subtopic_complete(subtopic_id: int, db: Session = Depends(get_db)):
 
-    return create_new_topic(db, learning_path_id, data)
+    subtopic = complete_subtopic(db, subtopic_id)
 
+    if not subtopic:
+        raise HTTPException(status_code=404, detail="Subtopic not found")
 
-@router.get("/{learning_path_id}", response_model=list[TopicResponse])
-def list_topics(
-        learning_path_id: int,
-        db: Session = Depends(get_db)
-):
-
-    return get_topics(db, learning_path_id)
+    return {
+        "message": "Subtopic completed",
+        "subtopic_id": subtopic.id,
+        "status": subtopic.status
+    }
