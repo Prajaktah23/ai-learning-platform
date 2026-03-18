@@ -7,7 +7,7 @@ class UserRegister(BaseModel):
     email: EmailStr
     password: str
     personality_mode: Literal["fast-track", "deep-mastery", "practical-only"]
-    hours_per_day: int
+    # hours_per_day: int
 
 
 class UserLogin(BaseModel):

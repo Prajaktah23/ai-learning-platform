@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
 import json
 from app.db.session import get_db
@@ -6,6 +6,8 @@ from app.llm.learning_path_prompt import LEARNING_PATH_PROMPT
 from app.llm.llm_provider import generate_text
 from app.services.foundation.tracking_service import create_learning_path
 from datetime import date
+from app.api.auth import get_current_user
+from app.models.user import User
 
 
 router = APIRouter()
@@ -16,10 +18,19 @@ def generate_learning_path(
     email: str = Query(..., description="User Email"),
     goal: str = Query(..., description="Skill to learn e.g. Python"),
     level: str = Query(..., description="Beginner | Intermediate | Advanced"),
+    hours_per_day: int = Query(..., description="Hours per day to dedicate to learning"),
     duration_weeks: int = Query(..., description="Number of weeks"),
     start_date: date = Query(..., description="Start date e.g. 2026-03-11"),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+
 ):
+    if email != current_user.email:
+        raise HTTPException(
+            status_code=403,
+            detail="You cannot generate learning path for another user"
+        )
+
     prompt = LEARNING_PATH_PROMPT.format(
         goal=goal,
         level=level,

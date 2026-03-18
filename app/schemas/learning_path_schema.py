@@ -7,6 +7,7 @@ class LearningPathGenerateRequest(BaseModel):
     email: str
     goal: str
     level: str
+    hours_per_day: int
     duration_weeks: int
     start_date: date
 
