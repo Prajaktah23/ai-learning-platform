@@ -1,57 +1,63 @@
-🚀 AI Learning Platform
+# 🚀 AI Learning Platform
 
-An AI-powered personalized learning platform that generates customized learning roadmaps, tracks user progress, and automatically creates assessments using Large Language Models (LLMs).
+An AI-powered personalized learning platform that generates customized learning roadmaps, adaptive assessments, and progress tracking using Large Language Models (LLMs).
 
-The platform leverages FastAPI, PostgreSQL, SQLAlchemy, JWT Authentication, and Ollama (Llama 3) to deliver adaptive learning experiences tailored to individual learning goals.
+Built with **FastAPI**, **PostgreSQL**, **SQLAlchemy**, **JWT Authentication**, and **Ollama (Llama 3)**, the platform enables learners to receive structured learning plans tailored to their goals, experience level, and available study time.
 
-📌 Overview
+---
 
-Traditional online learning platforms provide static courses that may not align with every learner's objectives, skill levels, or available study time.
+## 📌 Overview
 
-The AI Learning Platform solves this challenge by generating:
+Traditional learning platforms offer static content that may not align with individual learning objectives. This platform leverages Generative AI to dynamically create personalized learning journeys, helping users learn more efficiently and track their progress throughout the process.
 
-Personalized learning paths
-Topic-wise learning schedules
-AI-generated quizzes
-Progress tracking and analytics
-Secure user authentication
+### Key Capabilities
 
-Using Generative AI, the system dynamically creates structured learning roadmaps based on user goals, experience level, and study availability.
+* Personalized Learning Roadmaps
+* AI-Generated Topic & Subtopic Structure
+* Dynamic Quiz Generation
+* Learning Progress Analytics
+* Secure User Authentication
+* Adaptive Learning Experience
 
-✨ Key Features
-🔐 Authentication & Authorization
-User Registration
-Secure Login
-JWT Token Authentication
-Protected API Endpoints
-User-specific Learning Data
-🤖 AI-Powered Learning Path Generation
+---
 
-Generate personalized learning plans based on:
+## ✨ Features
 
-Learning Goal (Python, AI, Data Science, etc.)
-Experience Level
-Beginner
-Intermediate
-Advanced
-Study Hours Per Day
-Learning Duration
-Start Date
+### 🔐 Authentication & Authorization
 
-The platform uses Llama 3 via Ollama to create structured learning roadmaps.
+* User Registration & Login
+* JWT-Based Authentication
+* Password Hashing with Bcrypt
+* Protected API Endpoints
+* User-Specific Learning Data
 
-📚 Intelligent Learning Structure
+### 🤖 AI-Powered Learning Path Generation
 
-Generated learning paths contain:
+Generate customized learning plans based on:
 
-Learning Plans
-Topics
-Subtopics
-Weekly Progression
-Structured Study Timeline
+* Learning Goal (Python, AI, Data Science, ML, etc.)
+* Experience Level (Beginner, Intermediate, Advanced)
+* Study Hours Per Day
+* Learning Duration
+* Start Date
 
-Example:
+The platform uses **Llama 3 via Ollama** to generate structured and goal-oriented learning roadmaps.
 
+---
+
+### 📚 Intelligent Learning Structure
+
+Each generated roadmap contains:
+
+* Learning Plans
+* Topics
+* Subtopics
+* Weekly Learning Schedule
+* Structured Learning Timeline
+
+Example Learning Flow:
+
+```text
 Python Programming
 │
 ├── Basics
@@ -61,225 +67,299 @@ Python Programming
 │
 ├── Functions
 │
-├── OOP
+├── Object-Oriented Programming
 │
-└── Projects
-📝 AI-Generated Quizzes
+└── Real-World Projects
+```
 
-The system automatically generates:
+### 📝 AI-Generated Assessments
 
-Subtopic Quizzes
-5 MCQs
-Personalized per learner
-Topic Quizzes
-10 MCQs
-Comprehensive topic assessment
+The platform automatically creates assessments using LLMs.
 
-Quiz generation is handled dynamically using LLM prompts.
+#### Subtopic Quiz
 
-📊 Learning Progress Tracking
+* 5 Multiple Choice Questions
+* Concept Validation
+* Instant Evaluation
 
-Track:
+#### Topic Quiz
 
-Learning Progress
-Completed Topics
-Quiz Scores
-Learning Performance
-Assessment History
+* 10 Multiple Choice Questions
+* Comprehensive Assessment
+* Performance Tracking
 
-Dashboard APIs provide insights into learner performance.
+---
 
-🏗️ System Architecture
+### 📊 Progress Tracking & Analytics
+
+Track learner performance through:
+
+* Learning Progress
+* Completed Topics
+* Quiz Scores
+* Assessment History
+* Learning Performance Metrics
+
+---
+
+## 🏗️ System Architecture
+
+```text
 Frontend
-    │
-    ▼
+   │
+   ▼
 FastAPI Backend
-    │
-    ├── Authentication Module
-    ├── Learning Path Engine
-    ├── Quiz Engine
-    ├── Tracking Service
-    │
-    ▼
+   │
+   ├── Authentication Service
+   ├── Learning Path Engine
+   ├── Quiz Engine
+   ├── Tracking Service
+   │
+   ▼
 Ollama (Llama 3)
-    │
-    ▼
+   │
+   ▼
 PostgreSQL Database
-🛠️ Technology Stack
-Backend
-FastAPI
-Python
-SQLAlchemy
-Pydantic
-Uvicorn
-Database
-PostgreSQL
-AsyncPG
-Psycopg2
-AI/LLM
-Ollama
-Llama 3
-Transformers
-Torch
-Accelerate
-Security
-JWT Authentication
-Passlib
-Bcrypt
-Python-JOSE
-Deployment
-Docker
-Docker Compose
-📂 Project Structure
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### Backend
+
+* FastAPI
+* Python
+* SQLAlchemy
+* Pydantic
+* Uvicorn
+
+### Database
+
+* PostgreSQL
+* AsyncPG
+* Psycopg2
+
+### AI & Generative AI
+
+* Ollama
+* Llama 3
+* Transformers
+* PyTorch
+* Accelerate
+
+### Security
+
+* JWT Authentication
+* Passlib
+* Bcrypt
+* Python-JOSE
+
+### DevOps & Deployment
+
+* Docker
+* Docker Compose
+
+---
+
+## 📂 Project Structure
+
+```text
 ai-learning-platform/
 │
 ├── app/
 │   ├── api/
-│   │   ├── auth.py
-│   │   ├── learning_path.py
-│   │   ├── quiz.py
-│   │   └── tracking.py
-│   │
 │   ├── core/
-│   │   ├── auth.py
-│   │   └── security.py
-│   │
 │   ├── db/
-│   │   ├── database.py
-│   │   └── session.py
-│   │
 │   ├── llm/
-│   │   ├── learning_path_prompt.py
-│   │   └── llm_provider.py
-│   │
 │   ├── models/
-│   │   ├── user.py
-│   │   ├── learning_plan.py
-│   │   ├── topic.py
-│   │   ├── subtopic.py
-│   │   ├── quiz.py
-│   │   └── quiz_result.py
-│   │
 │   ├── schemas/
-│   └── services/
+│   ├── services/
+│   └── main.py
 │
 ├── requirements.txt
 ├── docker-compose.yml
 └── README.md
-⚙️ Installation
-1. Clone Repository
-git clone https://github.com/your-username/ai-learning-platform.git
+```
 
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Prajaktah23/ai-learning-platform.git
 cd ai-learning-platform
-2. Create Virtual Environment
+```
+
+### 2️⃣ Create Virtual Environment
+
+```bash
 python -m venv venv
+```
 
 Activate:
 
-# Windows
+**Windows**
+
+```bash
 venv\Scripts\activate
+```
 
-# Linux/Mac
+**Linux / macOS**
+
+```bash
 source venv/bin/activate
-3. Install Dependencies
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
-4. Setup PostgreSQL
+```
 
-Create a PostgreSQL database:
+### 4️⃣ Configure PostgreSQL
 
+Create a database:
+
+```sql
 CREATE DATABASE ai_learning_platform;
+```
 
-Update database configuration inside:
+Update database configurations inside:
 
+```text
 app/config.py
-5. Install Ollama
+```
 
-Download:
+### 5️⃣ Install Ollama & Llama 3
 
-https://ollama.com
+Install Ollama and pull the model:
 
-Pull Llama 3:
-
+```bash
 ollama pull llama3
+```
 
-Verify:
+Verify installation:
 
+```bash
 ollama run llama3
-6. Run Application
+```
+
+### 6️⃣ Run the Application
+
+```bash
 uvicorn app.main:app --reload
+```
 
-Application:
+Application URL:
 
+```text
 http://localhost:8000
+```
 
 Swagger Documentation:
 
+```text
 http://localhost:8000/docs
-🔑 API Endpoints
-Authentication
-Method	Endpoint
-POST	/auth/register
-POST	/auth/login
-POST	/auth/logout
-Learning Path
-Method	Endpoint
-POST	/generate-learning-path
+```
+
+---
+
+## 🔑 API Endpoints
+
+### Authentication
+
+| Method | Endpoint       |
+| ------ | -------------- |
+| POST   | /auth/register |
+| POST   | /auth/login    |
+| POST   | /auth/logout   |
+
+### Learning Path
+
+| Method | Endpoint                |
+| ------ | ----------------------- |
+| POST   | /generate-learning-path |
 
 Parameters:
 
-goal
-level
-hours_per_day
-duration_weeks
-start_date
-Quiz
-Method	Endpoint
-GET	/quiz/{quiz_id}
-POST	/quiz/{quiz_id}/submit
-GET	/quiz/dashboard/{email}
-🔒 Security Features
-JWT Token Authentication
-Password Hashing with Bcrypt
-Protected Routes
-User Ownership Validation
-Secure Database Access
-📈 Future Enhancements
-AI Mentor Chatbot
-RAG-based Learning Assistant
-Learning Recommendations Engine
-Adaptive Difficulty Quizzes
-Gamification & Leaderboards
-Video Course Integration
-Progress Visualization Dashboard
-Multi-LLM Support (GPT, Gemini, Claude, Llama)
-🎯 Use Cases
-Personalized Skill Development
-Corporate Learning Programs
-University Learning Platforms
-Coding Bootcamps
-Employee Upskilling
-AI-Based EdTech Solutions
-👨‍💻 Author
+* goal
+* level
+* hours_per_day
+* duration_weeks
+* start_date
 
-Prajakta Hake
+### Quiz
+
+| Method | Endpoint                |
+| ------ | ----------------------- |
+| GET    | /quiz/{quiz_id}         |
+| POST   | /quiz/{quiz_id}/submit  |
+| GET    | /quiz/dashboard/{email} |
+
+---
+
+## 🔒 Security Features
+
+* JWT Token Authentication
+* Password Hashing with Bcrypt
+* Protected APIs
+* User Ownership Validation
+* Secure Database Access
+
+---
+
+## 🚀 Future Enhancements
+
+* AI Mentor Chatbot
+* RAG-Based Learning Assistant
+* Adaptive Difficulty Quizzes
+* Learning Recommendation Engine
+* Gamification & Leaderboards
+* Interactive Dashboard
+* Video Course Integration
+* Multi-LLM Support (GPT, Gemini, Claude, Llama)
+
+---
+
+## 🎯 Use Cases
+
+* Personalized Skill Development
+* Corporate Training Programs
+* University Learning Platforms
+* Coding Bootcamps
+* Employee Upskilling
+* AI-Powered EdTech Solutions
+
+---
+
+## 👨‍💻 Author
+
+**Prajakta Hake**
 
 Associate Software Engineer | AI & Generative AI Developer
 
-Skills:
+### Skills
 
-Python
-FastAPI
-Generative AI
-LLMs
-LangChain
-LangGraph
-SQL
-PostgreSQL
-Docker
-Machine Learning
-Deep Learning
-📜 License
+* Python
+* FastAPI
+* Generative AI
+* LLMs
+* LangChain
+* LangGraph
+* PostgreSQL
+* Docker
+* Machine Learning
+* Deep Learning
+
+---
+
+## 📜 License
 
 This project is licensed under the MIT License.
+
+---
 
 ⭐ If you found this project useful, consider giving it a star and contributing to its future development.
